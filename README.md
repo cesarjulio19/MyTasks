@@ -10,6 +10,8 @@ contrario no llega a completarla en su fecha límite, la tarea se borrara del ta
 
 En la aplicación también apareceran tareas recomendadas ordenadas por tipos, aquí es donde entra el rol de administrador,
 el administrador podrá crear, modificar y borrar tareas y podrá crear grupos para esas tareas como por ejemplo tareas para estudiantes,
-deportistas ect.
+deportistas ect, el usuario registrado podrá elegir tareas recomendadas y solo tendrá que poner la fecha límite para realizarla.
+
+
 
 
