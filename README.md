@@ -14,7 +14,7 @@ deportistas etc, el usuario registrado podrá elegir tareas recomendadas y solo 
 
 El usuario también podrá guardar como favorito tareas que ya haya creado para que asi solo tendrá que poner la fecha
 de la tarea si quisiera volver a realizarla.
-
+<br>
 # Tecnologías a usar
 
 * Utilizaré PHP con el framework Laravel 8 en el backend.
@@ -23,7 +23,14 @@ de la tarea si quisiera volver a realizarla.
   en x tiempo utilizando Chartjs.
 * El despliegue de la página seguramente lo realize con infinityFree ya que realicé anteriormente 
   despliegues y no me dieron problemas, pero no descarto utilizar otros.
+<br>
+
+# Diagrama base de datos
 
 
 
+
+![descarga](https://user-images.githubusercontent.com/48284756/216590288-79f76f4b-a1ce-49c3-bedb-19dc51afeab9.png)
+
+![esquemaBD](https://user-images.githubusercontent.com/48284756/216590330-5b49d34c-8342-4d0d-a42a-3b5e202aa712.png)
 
