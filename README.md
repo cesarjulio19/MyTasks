@@ -15,7 +15,14 @@ deportistas etc, el usuario registrado podrá elegir tareas recomendadas y solo 
 El usuario también podrá guardar como favorito tareas que ya haya realizado o tareas recomendadas para que asi solo tendria que poner la fecha
 de la tarea si quisiera volver a realizarla.
 
-# Tecnología a usar
+# Tecnologías a usar
+
+* Utilizaré PHP con el framework Laravel 8 en el backend.
+* Utilizaré css y tailwind para el frontend y probablemente jquery también.
+* Es posible también que implemente una gráfica que muestre las tareas realizadas y no realizadas 
+  en x tiempo utilizando Chartjs.
+* El despliegue de la página seguramente lo realize con infinityFree ya que realicé anteriormente 
+  despliegues y no me dieron problemas, pero no descarto utilizar otros.
 
 
 
