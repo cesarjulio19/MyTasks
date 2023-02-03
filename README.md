@@ -12,7 +12,7 @@ En la aplicación también apareceran tareas recomendadas ordenadas por tipos, a
 el administrador podrá crear, modificar y borrar tareas y podrá crear grupos para esas tareas como por ejemplo tareas para estudiantes,
 deportistas etc, el usuario registrado podrá elegir tareas recomendadas y solo tendrá que poner la fecha límite para realizarla.
 
-El usuario también podrá guardar como favorito tareas que ya haya creado para que asi solo tendrá que poner la fecha
+El usuario también podrá guardar como favorito tareas que ya haya creado para que asi solo tenga que poner la fecha
 de la tarea si quisiera volver a realizarla.
 <br>
 # Tecnologías a usar
