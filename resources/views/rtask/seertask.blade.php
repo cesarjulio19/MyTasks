@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h2 class="">{{$ttask->type}}</h2>
+<h2 class="" style= 'color: white'>{{$ttask->type}}</h2>
 <!--if the user is an admin the form to add rtasks is displayed-->
 @if($user->role == 'A' )
 
@@ -22,7 +22,7 @@
 <main class="main-card">
 @foreach($rtask as $item)
 
-  <div class="card">
+  <div class="card-rtask">
 
     <div class="card-title">
 
@@ -47,7 +47,7 @@
     </div>
     @else
 
-    <div class="card-footer-saved">
+    <div class="card-footer-admin">
 
       <div class="item">
         <div>
@@ -58,6 +58,12 @@
       <div class="item">
         <div>
             <a class="" href="{{ route('rtask.delete', $item) }}">{{ __('Delete') }}</a>
+        </div>
+      </div>
+
+      <div class="item">
+        <div>
+            <a class="" href="{{ route('rtask.seedit', $item) }}">{{ __('Edit') }}</a>
         </div>
       </div>
 

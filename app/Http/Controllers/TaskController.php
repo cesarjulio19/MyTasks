@@ -19,9 +19,15 @@ class TaskController extends Controller
         $tasks = $user->task();
         // if the date of the task is less than the current date, it will be set to not completed
         foreach($tasks as $item){
-            if($item->date < now()->toDateString()){
+            if(($item->date < now()->toDateString()) && ($item->status == "inprogress" ) ){
                 $item->status = "not completed";
                 $item->save();
+
+                $user->inptasks = $user->inptasks - 1;
+                $user->noctasks = $user->noctasks + 1;
+                $user->save();
+
+                
             }
         }
         
@@ -48,6 +54,10 @@ class TaskController extends Controller
         $task->idUse = Auth::user()->idUse;
         $task->save();
 
+        $user = User::findOrFail(Auth::user()->idUse);
+        $user->inptasks = $user->inptasks + 1;
+        $user->save();
+
         return redirect()->route('home') ;
 
         
@@ -56,21 +66,39 @@ class TaskController extends Controller
      //see edit form
     public function seedit(Request $req, Task $task)
     { 
+        
         return view('task.edit', ['task' => $task]);
+       
+        
     }
     // edit a task
     public function edit(Request $req)
     { 
+
+        
         $task = Task::find($req->idTas);
-        $task->title = $req->title;
-        $task->description = $req->description;
-        $task->date = $req->date;
-        $task->save();
-        return redirect()->route('home') ;
+        $values = [
+          'title' => $req->title,
+          'description' => $req->description,
+          'date' => $req->date
+        ];
+
+        $query = DB::table('task')->where('idTas',$req->idTas)->update($values);
+        if($query){
+            return response()->json(['status'=>1, 'msg'=>'the task has been edited successfully, return to the home page to see the changes']);
+        }else{
+            return response()->json(['status'=>0, 'msg'=>'the task has not been edited successfully, please try again']);
+        }
     }
     //Delete Task
     public function delete(Request $req, Task $task)
     { 
+        if($task->status == "inprogress"){
+            $user = User::findOrFail(Auth::user()->idUse);
+            $user->inptasks = $user->inptasks - 1;
+            $user->save();
+        }
+
         $task->delete() ;
         return redirect()->route('home') ;
 
@@ -102,8 +130,16 @@ class TaskController extends Controller
     //sets the status to complete
     public function complete(Request $req, Task $task)
     { 
-        $task->status = "complete";
-        $task->save();
+        if($task->status == "inprogress"){
+            $task->status = "complete";
+            $task->save();
+
+            $user = User::findOrFail(Auth::user()->idUse);
+            $user->inptasks = $user->inptasks - 1;
+            $user->comtasks = $user->comtasks + 1;
+            $user->save();
+        }
+        
         return redirect()->route('home') ;
 
     }

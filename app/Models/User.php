@@ -29,6 +29,9 @@ class User extends Authenticatable
         'last_name',
         'role',
         'date',
+        'inptasks',
+        'comtasks',
+        'noctasks',
     ];
 
     /**

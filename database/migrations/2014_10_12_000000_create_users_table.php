@@ -22,6 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('role',1);
             $table->date("date");
+            $table->integer("inptasks")->default(0);
+            $table->integer("comtasks")->default(0);
+            $table->integer("noctasks")->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

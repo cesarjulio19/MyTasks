@@ -4,7 +4,7 @@
 <!--card showing stasks data-->
 <main class="main-card">
 @foreach($stask as $item)
-  <div class="card">
+  <div class="card-stask">
 
     <div class="card-title">
 

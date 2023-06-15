@@ -57,4 +57,23 @@ class RtaskController extends Controller
         return view('rtask.add', ['rtask' => $rtask]) ;
         
     }
+
+    //see edit form
+    public function seedit(Request $req, Rtask $rtask)
+    { 
+        $ttask = Ttask::find($rtask->idTta);
+        $rtasks = $ttask->rtask();
+        $user = User::findOrFail(Auth::user()->idUse);
+        return view('rtask.edit', ['rtask' => $rtask, 'rtasks' => $rtasks, 'ttask' => $ttask, 'user' => $user ]);
+    }
+
+    // edit a task
+    public function edit(Request $req)
+    { 
+        $rtask = Rtask::find($req->idRta);
+        $rtask->title = $req->title;
+        $rtask->description = $req->description;
+        $rtask->save();
+        return redirect()->route('ttask.seettask') ;
+    }
 }

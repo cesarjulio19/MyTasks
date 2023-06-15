@@ -14,45 +14,53 @@
     
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a553f57c3f.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
     <div id="app">
-        <header class="bg-blue-900 py-6">
-            <div class="container mx-auto flex justify-between items-center px-6">
-                <div>
-                    <a href="{{ url('/home') }}" class="text-lg font-semibold text-gray-100 no-underline">
-                        <!--{{ config('app.name', 'Laravel') }}-->
-                        {{ __('MyTasks') }}
-                    </a>
-
-                </div>
+        
+                
                 <!-- Navigation Bar-->
-                <nav class="space-x-4 text-gray-300 text-sm sm:text-base">
+                <nav>
+                    <input type="checkbox" id="check">
+                    <label for="check" class="checkbtn">
+                    <i class="fa-solid fa-bars"></i>
+                    </label>
+                    <a href="{{ url('/home') }}" class="enlace">
+                        <img src="{{asset('img/mytask.svg')}}" alt="" class="logo">
+                    </a>
+                    <ul class="ul-nav">
                     @guest
-                        <a class="no-underline hover:underline" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
                         @if (Route::has('register'))
-                            <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @endif
                     @else
-                       <a class="no-underline hover:underline" href="{{ route('task.seeinsert') }}">{{ __('New Task') }}</a>
-                       <a class="no-underline hover:underline" href="{{ route('stask.seestask') }}">{{ __('saved tasks') }}</a>
-                       <a class="no-underline hover:underline" href="{{ route('ttask.seettask') }}">{{ __('recommended tasks') }}</a>
-
-                        <span>{{ Auth::user()->name }}</span>
-
-                        <a href="{{ route('logout') }}"
-                           class="no-underline hover:underline"
+                        <li><a href="{{ route('task.seeinsert') }}">{{ __('New Task') }}</a></li>
+                        <li><a href="{{ route('stask.seestask') }}">{{ __('Saved tasks') }}</a></li>
+                        <li><a href="{{ route('ttask.seettask') }}">{{ __('Recommended tasks') }}</a></li>
+                        <li><a href="{{ route('profile.seeprofile') }}">{{ __('Profile') }}</a></li>
+                        <li><a href="{{ route('logout') }}"
+                           class="active"
                            onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                             {{ csrf_field() }}
                         </form>
                     @endguest
+                    </ul>
                 </nav>
-            </div>
-        </header>
+            
 
         @yield('content')
     </div>
+    
+  
 </body>
 </html>

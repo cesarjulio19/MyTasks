@@ -5,6 +5,7 @@ use App\Http\Controllers\TaskController ;
 use App\Http\Controllers\StaskController ;
 use App\Http\Controllers\TtaskController ;
 use App\Http\Controllers\RtaskController ;
+use App\Http\Controllers\ProfileController ;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,31 +40,31 @@ Route::group(['prefix' => 'task',
    
     Route::get('seeinsert', 
                [TaskController::class,'seeinsert'])
-        ->name('seeinsert') ;
+        ->name('seeinsert')->middleware(['auth']) ;
 
     Route::post('insert', 
                 [TaskController::class,'insert'])
-        ->name('insert') ;
+        ->name('insert')->middleware(['auth']) ;
 
     Route::get('seedit/{task}', 
                [TaskController::class,'seedit'])
-        ->name('seedit') ;
+        ->name('seedit')->middleware(['auth']) ;
 
     Route::post('edit', 
                 [TaskController::class,'edit'])
-        ->name('edit') ;
+        ->name('edit')->middleware(['auth']) ;
     
     Route::get('delete/{task}', 
                [TaskController::class,'delete'])
-        ->name('delete') ;
+        ->name('delete')->middleware(['auth']) ;
 
     Route::get('save/{task}', 
                [TaskController::class,'save'])
-        ->name('save') ;
+        ->name('save')->middleware(['auth']) ;
     
     Route::get('complete/{task}', 
                [TaskController::class,'complete'])
-        ->name('complete') ;
+        ->name('complete')->middleware(['auth']) ;
 
 });
 
@@ -77,15 +78,15 @@ Route::group(['prefix' => 'stask',
    
     Route::get('seestask', 
                [StaskController::class,'index'])
-        ->name('seestask') ;
+        ->name('seestask')->middleware(['auth']) ;
 
     Route::get('delete/{stask}', 
                [StaskController::class,'delete'])
-        ->name('delete') ;
+        ->name('delete')->middleware(['auth']) ;
 
     Route::get('seeadd/{stask}', 
                [StaskController::class,'seeadd'])
-    ->name('seeadd') ;
+    ->name('seeadd')->middleware(['auth']) ;
 
 
 });
@@ -99,15 +100,23 @@ Route::group(['prefix' => 'ttask',
    
     Route::get('seettask', 
                [TtaskController::class,'index'])
-        ->name('seettask') ;
+        ->name('seettask')->middleware(['auth']) ;
 
     Route::post('insert', 
                 [TtaskController::class,'insert'])
-        ->name('insert') ;
+        ->name('insert')->middleware('admin') ;
 
     Route::get('delete/{ttask}', 
                [TtaskController::class,'delete'])
-        ->name('delete') ;
+        ->name('delete')->middleware('admin')  ;
+
+    Route::get('seedit/{ttask}', 
+               [TtaskController::class,'seedit'])
+        ->name('seedit')->middleware('admin')  ;
+
+    Route::post('edit', 
+                [TtaskController::class,'edit'])
+        ->name('edit')->middleware('admin')  ;
 
 
 });
@@ -121,20 +130,45 @@ Route::group(['prefix' => 'rtask',
    
     Route::get('seertask/{ttask}', 
                [RtaskController::class,'index'])
-        ->name('seertask') ;
+        ->name('seertask')->middleware(['auth']) ;
 
     Route::post('insert', 
                 [RtaskController::class,'insert'])
-        ->name('insert') ;
+        ->name('insert')->middleware('admin')  ;
 
     Route::get('delete/{rtask}', 
                [RtaskController::class,'delete'])
-        ->name('delete') ;
+        ->name('delete')->middleware('admin') ;
 
     Route::get('seeadd/{rtask}', 
                [RtaskController::class,'seeadd'])
-        ->name('seeadd') ;
+        ->name('seeadd')->middleware(['auth']) ;
+    
+    Route::get('seedit/{rtask}', 
+               [RtaskController::class,'seedit'])
+        ->name('seedit')->middleware('admin') ;
 
+    Route::post('edit', 
+                [RtaskController::class,'edit'])
+        ->name('edit')->middleware('admin') ;
+
+
+
+});
+
+//operations with profile
+
+Route::group(['prefix' => 'profile', 
+              'as'     => 'profile.'], function()
+{
+   
+    Route::get('seeprofile', 
+               [ProfileController::class,'index'])
+        ->name('seeprofile')->middleware(['auth']) ;
+
+    Route::get('restartg', 
+               [ProfileController::class,'restartg'])
+        ->name('restartg')->middleware(['auth']) ;
 
 
 });

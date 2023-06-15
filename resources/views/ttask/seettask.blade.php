@@ -19,7 +19,7 @@
 <!--card showing the name of the task type-->
 <main class="main-card">
 @foreach($ttask as $item)
-  <div class="card">
+  <div class="card-ttask">
 
     <div class="card-title">
 
@@ -39,7 +39,7 @@
     </div>
     @else
 
-    <div class="card-footer-saved">
+    <div class="card-footer-admin">
 
       <div class="item">
         <div>
@@ -50,6 +50,12 @@
       <div class="item">
         <div>
             <a class="" href="{{ route('ttask.delete', $item) }}">{{ __('Delete') }}</a>
+        </div>
+      </div>
+
+      <div class="item">
+        <div>
+            <a class="" href="{{ route('ttask.seedit', $item) }}">{{ __('Edit') }}</a>
         </div>
       </div>
 

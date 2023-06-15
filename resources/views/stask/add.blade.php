@@ -2,7 +2,7 @@
 @extends('layouts.app')
 @section('content')
 <section class="form-task">
-<h4>New Task</h4>
+<h4>Add Task</h4>
 
 <form action="{{ route('task.insert') }}" method="POST">
 @csrf

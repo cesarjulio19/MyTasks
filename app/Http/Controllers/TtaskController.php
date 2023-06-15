@@ -45,5 +45,23 @@ class TtaskController extends Controller
     }
 
 
+     //see edit form
+     public function seedit(Request $req, Ttask $ttask)
+     { 
+         $typeT = Ttask::all() ;
+         $user = User::findOrFail(Auth::user()->idUse);
+         return view('ttask.edit', ['ttask' => $ttask, 'ttasks' => $typeT, 'user' => $user ]);
+         
+     }
+     // edit a ttask
+     public function edit(Request $req)
+     { 
+         $ttask = Ttask::find($req->idTta);
+         $ttask->type = $req->type;
+         $ttask->save();
+         return redirect()->route('ttask.seettask') ;
+     }
+
+
     
 }

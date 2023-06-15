@@ -2,9 +2,9 @@
 @section('content')
 <!--Form to edit a task-->
 <section class="form-task">
-<h4>New Task</h4>
+<h4>Edit Task</h4>
 
-<form action="{{ route('task.edit') }}" method="POST">
+<form action="{{ route('task.edit') }}" method="POST" id="formtask">
 @csrf
 <input class="controls" type="text" name="title" id="title" placeholder="Title" maxlength="100" value="{{$task->title}}" required>
 <input class="controls" type="text" name="description" id="description" placeholder="Description" maxlength="255" value="{{$task->description}}" required>
@@ -16,3 +16,5 @@
 </form>
 </section>
 @endsection
+
+

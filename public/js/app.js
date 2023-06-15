@@ -19710,3 +19710,159 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	
 /******/ })()
 ;
+
+/*JS*/
+
+
+//task animation
+let card = document.getElementsByClassName("card");
+let footer = document.getElementsByClassName("card-footer");
+
+for(let i = 0; i < card.length; i++){
+
+  card[i].addEventListener("mouseover", function(){
+    
+       footer[i].style.visibility = "visible";
+       
+  });
+
+  card[i].addEventListener("mouseout", function(){
+    
+    footer[i].style.visibility = "hidden";
+    
+});
+}
+
+//stask animation
+
+let scard = document.getElementsByClassName("card-stask");
+let sfooter = document.getElementsByClassName("card-footer-saved");
+
+for(let i = 0; i < scard.length; i++){
+
+  scard[i].addEventListener("mouseover", function(){
+    
+       sfooter[i].style.visibility = "visible";
+       
+  });
+
+  scard[i].addEventListener("mouseout", function(){
+    
+    sfooter[i].style.visibility = "hidden";
+    
+});
+}
+
+//ttask animation
+
+let tcard = document.getElementsByClassName("card-ttask");
+let tfooter = document.getElementsByClassName("card-footer-type");
+
+for(let i = 0; i < tcard.length; i++){
+
+  tcard[i].addEventListener("mouseover", function(){
+    
+       tfooter[i].style.visibility = "visible";
+       
+  });
+
+  tcard[i].addEventListener("mouseout", function(){
+    
+    tfooter[i].style.visibility = "hidden";
+    
+});
+}
+
+//rtask animation
+
+let rcard = document.getElementsByClassName("card-rtask");
+let rfooter = document.getElementsByClassName("card-footer-type");
+
+for(let i = 0; i < rcard.length; i++){
+
+  rcard[i].addEventListener("mouseover", function(){
+    
+       rfooter[i].style.visibility = "visible";
+       
+  });
+
+  rcard[i].addEventListener("mouseout", function(){
+    
+    rfooter[i].style.visibility = "hidden";
+    
+});
+}
+
+//admin-card animation 1
+
+let acard = document.getElementsByClassName("card-ttask");
+let afooter = document.getElementsByClassName("card-footer-admin");
+
+for(let i = 0; i < acard.length; i++){
+
+  acard[i].addEventListener("mouseover", function(){
+    
+       afooter[i].style.visibility = "visible";
+       
+  });
+
+  acard[i].addEventListener("mouseout", function(){
+    
+    afooter[i].style.visibility = "hidden";
+    
+});
+}
+
+//admin-card animation 2
+
+let aacard = document.getElementsByClassName("card-rtask");
+let aafooter = document.getElementsByClassName("card-footer-admin");
+
+for(let i = 0; i < aacard.length; i++){
+
+  aacard[i].addEventListener("mouseover", function(){
+    
+       aafooter[i].style.visibility = "visible";
+       
+  });
+
+  aacard[i].addEventListener("mouseout", function(){
+    
+    aafooter[i].style.visibility = "hidden";
+    
+});
+}
+
+//form-task edit
+
+$(function(){
+
+  $("#formtask").on('submit', function(e){
+     e.preventDefault();
+
+     $.ajax({
+        url:$(this).attr('action'),
+        method:$(this).attr('method'),
+        data:new FormData(this),
+        processData:false,
+        dataType:'json',
+        contentType:false,
+        beforeSend:function(){
+
+        },
+        success:function(data){
+           if(data.status == 0){
+               alert(data.msg);
+           }else{
+            alert(data.msg);
+           }
+        }
+     });
+  });
+});
+
+
+
+
+
+

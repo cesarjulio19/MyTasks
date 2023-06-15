@@ -4,10 +4,10 @@
 <!--Create the card of each task with your data-->
 <main class="main-card">
 @foreach($task as $item)
-  <div class="card">
+  <div class="card" >
 
     <div class="card-title">
-
+    
      <h2>{{$item->title}}</h2>
 
     </div>
@@ -24,7 +24,7 @@
       @endif
     </div>
 
-    <div class="card-footer">
+    <div class="card-footer" >
 
       <div class="item">
         <div>
@@ -59,4 +59,5 @@
   @endforeach
   
 </main>
+
 @endsection
