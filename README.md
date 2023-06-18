@@ -28,7 +28,7 @@
 
  * Front-end: HTML5-CSS-JAVASCRIPT-AJAX-TAILWIND
 
- * Despliegue aplicación: el proyecto estará alojado en una instancia EC2 de aws
+ * Despliegue aplicación: el proyecto estará alojado en una instancia EC2 de aws 44.215.232.187
 
  ## Esquema Base De Datos
  
